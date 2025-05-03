@@ -1,0 +1,42 @@
+<div class="painel">
+    <div class="formulario">
+      <h2>Cadastro de Agência</h2>
+      <label>Nome:</label>
+      <input [(ngModel)]="novaAgencia.nome" />
+      <label>Código:</label>
+      <input [(ngModel)]="novaAgencia.codigo" />
+      <label>Banco:</label>
+      <select [(ngModel)]="novaAgencia.banco">
+        <option *ngFor="let banco of bancos" [value]="banco.name">{{ banco.name }}</option>
+      </select>
+      <button (click)="adicionarAgencia()">Cadastrar</button>
+    </div>
+  
+    <div class="listagem">
+      <h2>Lista de Agências</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Código</th>
+            <th>Banco</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let agencia of agencias">
+            <td>{{ agencia.nome }}</td>
+            <td>{{ agencia.codigo }}</td>
+            <td>{{ agencia.banco }}</td>
+            <td>{{ agencia.ativo ? 'Ativa' : 'Inativa' }}</td>
+            <td>
+              <button *ngIf="agencia.ativo" (click)="desativarAgencia(agencia)">Desativar</button>
+              <span *ngIf="!agencia.ativo">Desativado</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

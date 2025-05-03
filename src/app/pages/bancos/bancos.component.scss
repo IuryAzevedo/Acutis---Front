@@ -1,0 +1,106 @@
+:host {
+  display: flex; /* Ativa o Flexbox no componente */
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+}
+
+.banco-container {
+  display: flex; /* Coloca os containers de cadastro e listagem lado a lado */
+  width: 100%;
+  height: 100%;
+}
+
+.cadastro-container {
+  width: 50%; /* Ocupa 50% da largura para o cadastro */
+  padding: 2rem;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0; /* Adiciona uma linha divisória (opcional) */
+}
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cadastro-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro-form label {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.cadastro-form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cadastro-form button {
+  background-color: #0066cc;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cadastro-form button:hover {
+  background-color: #0052a3;
+}
+
+.listagem-container {
+  width: 50%; /* Ocupa 50% da largura para a listagem */
+  padding: 2rem;
+  background-color: #f4f7fb;
+}
+
+.listagem-container h3 {
+  color: #004b93;
+  margin-bottom: 1rem;
+}
+
+.listagem-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.listagem-container th, .listagem-container td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.listagem-container th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.listagem-container .btn-desativar {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.listagem-container .btn-desativar:hover {
+  background-color: #c82333;
+}
+
+.listagem-container .ativo {
+  color: green;
+}
+
+.listagem-container .inativo {
+  color: red;
+}

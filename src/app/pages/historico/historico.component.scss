@@ -1,0 +1,59 @@
+:host {
+    display: block;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #004d99;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  
+    &:focus {
+      border-color: #0077cc;
+      outline: none;
+    }
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  
+    li {
+      background-color: #ffffff;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.8rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease;
+  
+      &:hover {
+        transform: translateY(-2px);
+      }
+  
+      strong {
+        color: #005b99;
+      }
+  
+      span {
+        display: block;
+        font-size: 0.9rem;
+        color: #777;
+      }
+    }
+  }
+  

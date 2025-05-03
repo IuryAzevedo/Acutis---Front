@@ -1,0 +1,57 @@
+.painel {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f0f8ff;
+  
+    .formulario,
+    .listagem {
+      flex: 1;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    h2 {
+      color: #004080;
+    }
+  
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+  
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+  
+    button {
+      margin-top: 1.5rem;
+      background-color: #0077cc;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #005fa3;
+      }
+    }
+  
+    ul {
+      padding-left: 1.2rem;
+    }
+  
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+  

@@ -1,0 +1,94 @@
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+
+  video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.home-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.4); // sobreposição escura leve
+}
+
+.home-content {
+  max-width: 800px;
+
+  h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .btn-login {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    background-color: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #125a9c;
+    }
+  }
+
+  .btn-start {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    background-color: #fff; /* Cor de fundo branca inicial */
+    color: #1976d2; /* Cor do texto azul inicial */
+    border: none; /* Remove a borda padrão */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative; /* Necessário para o efeito de pseudo-elemento */
+    overflow: hidden; /* Garante que o efeito fique dentro do botão */
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%; /* Começa com largura zero */
+      height: 100%;
+      background-color: #1976d2; /* Cor de preenchimento azul */
+      transition: width 0.3s ease-in-out; /* Animação da largura */
+      z-index: -1; /* Coloca o pseudo-elemento atrás do texto */
+    }
+  
+    &:hover {
+      color: #fff; /* Cor do texto branca ao passar o mouse */
+      background-color: transparent; /* Remove o fundo branco padrão no hover */
+  
+      &::before {
+        width: 100%; /* Preenche o botão com a cor azul ao passar o mouse */
+      }
+    }
+  }
+}

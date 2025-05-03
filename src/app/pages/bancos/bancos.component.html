@@ -1,0 +1,48 @@
+<div class="banco-container">
+  <div class="cadastro-container">
+    <h2>Cadastro de Banco</h2>
+    <div class="cadastro-form">
+      <div>
+        <label for="nomeBanco">Nome do Banco:</label>
+        <input type="text" id="nomeBanco">
+      </div>
+      <div>
+        <label for="codigoBanco">Código:</label>
+        <input type="text" id="codigoBanco">
+      </div>
+      <button>Cadastrar novo banco</button>
+    </div>
+  </div>
+
+  <div class="listagem-container">
+    <h3>Lista de Bancos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Código</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let banco of bancos">
+          <td>{{ banco.nome }}</td>
+          <td>{{ banco.codigo }}</td>
+          <td [ngClass]="{ ativo: banco.ativo, inativo: !banco.ativo }">
+            {{ banco.ativo ? 'Ativo' : 'Inativo' }}
+          </td>
+          <td>
+            <button
+              *ngIf="banco.ativo"
+              (click)="desativarBanco(banco)"
+              class="btn-desativar">
+              Desativar
+            </button>
+            <span *ngIf="!banco.ativo">Desativado</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

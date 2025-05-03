@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="card form-section">
+      <h2>Cadastro de Conta</h2>
+  
+      <form (ngSubmit)="adicionarConta()">
+        <label>
+          Usuário:
+          <input type="text" [(ngModel)]="novaConta.usuario" name="usuario" required />
+        </label>
+  
+        <label>
+          Agência:
+          <input type="text" [(ngModel)]="novaConta.agencia" name="agencia" required />
+        </label>
+  
+        <label>
+          Tipo de Conta:
+          <select [(ngModel)]="novaConta.tipo" name="tipo" required>
+            <option value="Corrente">Corrente</option>
+            <option value="Poupança">Poupança</option>
+            <option value="Salário">Salário</option>
+          </select>
+        </label>
+  
+        <div *ngIf="novaConta.tipo === 'Corrente'">
+          <label>
+            Limite de Crédito:
+            <input type="number" [(ngModel)]="novaConta.limiteCredito" name="limiteCredito" />
+          </label>
+        </div>
+  
+        <div *ngIf="novaConta.tipo === 'Poupança'">
+          <label>
+            Rendimento Mensal (%):
+            <input type="number" [(ngModel)]="novaConta.rendimentoMensal" name="rendimentoMensal" />
+          </label>
+        </div>
+  
+        <div *ngIf="novaConta.tipo === 'Salário'">
+          <label>
+            CNPJ da Empresa:
+            <input type="text" [(ngModel)]="novaConta.cnpjEmpresa" name="cnpjEmpresa" />
+          </label>
+        </div>
+  
+        <button type="submit">Cadastrar Conta</button>
+      </form>
+    </div>
+  
+    <div class="card list-section">
+      <h2>Lista de Contas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th>Agência</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let conta of contas">
+            <td>{{ conta.usuario }}</td>
+            <td>{{ conta.agencia }}</td>
+            <td>{{ conta.tipo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

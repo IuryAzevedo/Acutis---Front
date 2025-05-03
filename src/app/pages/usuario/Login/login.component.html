@@ -1,0 +1,15 @@
+<div class="login-container">
+  <div class="left-image">
+    <img src="assets/happyMan.jpg" alt="Imagem de Login" />
+  </div>
+  
+  <div class="right-form">
+    <h2>Acutis - Login</h2>
+    <form (ngSubmit)="login()">
+      <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+      <input type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" required />
+      <button (click)="irParaDashboard()" type="submit">Entrar</button>
+    </form>
+    <p>Não tem uma conta? <a (click)="irParaCadastro()" routerLink="/cadastro">Cadastre-se</a></p>
+  </div>
+</div>

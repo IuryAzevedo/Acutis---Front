@@ -1,0 +1,8 @@
+<h2>Histórico de Ações</h2>
+<input [(ngModel)]="filtro" placeholder="Buscar..." />
+
+<ul>
+  <li *ngFor="let log of historicoFiltrado()">
+    {{ log.data | date:'short' }} - <strong>{{ log.usuario }}</strong> realizou: {{ log.acao }} ({{ log.entidade }})
+  </li>
+</ul>

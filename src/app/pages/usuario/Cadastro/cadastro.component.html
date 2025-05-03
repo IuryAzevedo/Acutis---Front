@@ -1,0 +1,16 @@
+<div class="cadastro-container">
+  <div class="left-image">
+    <img src="assets/register.jpg" alt="Imagem de Cadastro" />
+  </div>
+
+  <div class="right-form">
+    <h2>Acutis - Cadastro</h2>
+    <form (ngSubmit)="cadastrar()">
+      <input type="text" placeholder="Nome completo" [(ngModel)]="nome" name="nome" required />
+      <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+      <input type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" required />
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
+  </div>
+</div>
