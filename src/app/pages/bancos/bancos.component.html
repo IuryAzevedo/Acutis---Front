@@ -4,13 +4,18 @@
     <div class="cadastro-form">
       <div>
         <label for="nomeBanco">Nome do Banco:</label>
-        <input type="text" id="nomeBanco">
+        <input type="text" id="nomeBanco" [(ngModel)]="novoBanco.nome" name="nomeBanco">
       </div>
       <div>
-        <label for="codigoBanco">Código:</label>
-        <input type="text" id="codigoBanco">
+        <label for="dataFundacao">Data de Fundação:</label>
+        <input
+          type="date"
+          id="dataFundacao"
+          [ngModel]="(novoBanco.dataFundacao || '').split('T')[0]"
+          (ngModelChange)="atualizarDataFundacao($event)"
+          name="dataFundacao">
       </div>
-      <button>Cadastrar novo banco</button>
+      <button (click)="adicionarBanco()">Cadastrar novo banco</button>
     </div>
   </div>
 
@@ -20,27 +25,29 @@
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Código</th>
+          <th>Data Fundação</th>
           <th>Status</th>
           <th>Ações</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let banco of bancos">
-          <td>{{ banco.nome }}</td>
-          <td>{{ banco.codigo }}</td>
-          <td [ngClass]="{ ativo: banco.ativo, inativo: !banco.ativo }">
-            {{ banco.ativo ? 'Ativo' : 'Inativo' }}
-          </td>
-          <td>
-            <button
-              *ngIf="banco.ativo"
-              (click)="desativarBanco(banco)"
-              class="btn-desativar">
-              Desativar
-            </button>
-            <span *ngIf="!banco.ativo">Desativado</span>
-          </td>
+          <ng-container *ngIf="banco">
+            <td>{{ banco.nome }}</td>
+            <td>{{ banco.dataFundacao }}</td>
+            <td [ngClass]="{ ativo: banco.ativo, inativo: !banco.ativo }">
+              {{ banco.ativo ? 'Ativo' : 'Inativo' }}
+            </td>
+            <td>
+              <!-- <button -->
+                <!-- *ngIf="banco.ativo" -->
+                <!-- (click)="desativarBanco(banco)" -->
+                <!-- class="btn-desativar"> -->
+                <!-- Desativar -->
+              <!-- </button> -->
+              <span *ngIf="!banco.ativo">Desativado</span>
+            </td>
+          </ng-container>
         </tr>
       </tbody>
     </table>

@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { IAgencia } from '../../models/agencia.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AgenciaService {
-  private agencias: IAgencia[] = [];
+  private API_URL = 'http://localhost:8080/agencia'; // ajuste se necessário
 
-  adicionarAgencia(agencia: IAgencia): void {
-    this.agencias.push(agencia);
+  constructor(private http: HttpClient) {}
+
+  getAgencias(): Observable<IAgencia[]> {
+    return this.http.get<IAgencia[]>(`${this.API_URL}/all`);
   }
 
-  getAgencias(): IAgencia[] {
-    return this.agencias;
-  }
-
-  getAgenciaPorId(id: number): IAgencia | undefined {
-    return this.agencias.find((a) => a.id === id);
-  }
-
-  getAgenciasPorBanco(bancoId: number): IAgencia[] {
-    return this.agencias.filter((a) => a.bancoId === bancoId);
+  adicionarAgencia(agencia: IAgencia): Observable<any> {
+    return this.http.post(`${this.API_URL}/nova`, agencia);
   }
 }

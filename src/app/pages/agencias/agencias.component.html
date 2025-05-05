@@ -1,42 +1,55 @@
-<div class="painel">
-    <div class="formulario">
-      <h2>Cadastro de Agência</h2>
-      <label>Nome:</label>
-      <input [(ngModel)]="novaAgencia.nome" />
-      <label>Código:</label>
-      <input [(ngModel)]="novaAgencia.codigo" />
-      <label>Banco:</label>
-      <select [(ngModel)]="novaAgencia.banco">
-        <option *ngFor="let banco of bancos" [value]="banco.name">{{ banco.name }}</option>
+<div class="painel-agencia">
+  <!-- Formulário de Cadastro -->
+  <div class="bloco formulario">
+    <h2>Cadastro de Agência</h2>
+
+    <form (ngSubmit)="adicionarAgencia()">
+      <label for="nome">Nome da Agência:</label>
+      <input
+        id="nome"
+        type="text"
+        [(ngModel)]="novaAgencia.nome"
+        name="nome"
+        required
+      />
+
+      <label for="endereco">Endereço:</label>
+      <input
+        id="endereco"
+        type="text"
+        [(ngModel)]="novaAgencia.endereco"
+        name="endereco"
+        required
+      />
+
+      <label for="banco">Banco:</label>
+      <select
+        id="banco"
+        [(ngModel)]="novaAgencia.bancoId"
+        name="bancoId"
+        required
+      >
+        <option value="" disabled selected>Selecione um banco</option>
+        <option *ngFor="let banco of bancos" [value]="banco.id">
+          {{ banco.nome }}
+        </option>
       </select>
-      <button (click)="adicionarAgencia()">Cadastrar</button>
-    </div>
-  
-    <div class="listagem">
-      <h2>Lista de Agências</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Código</th>
-            <th>Banco</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let agencia of agencias">
-            <td>{{ agencia.nome }}</td>
-            <td>{{ agencia.codigo }}</td>
-            <td>{{ agencia.banco }}</td>
-            <td>{{ agencia.ativo ? 'Ativa' : 'Inativa' }}</td>
-            <td>
-              <button *ngIf="agencia.ativo" (click)="desativarAgencia(agencia)">Desativar</button>
-              <span *ngIf="!agencia.ativo">Desativado</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+      <button type="submit">Cadastrar</button>
+    </form>
   </div>
-  
+
+  <!-- Listagem -->
+  <div class="bloco listagem">
+    <h2>Agências Cadastradas</h2>
+    <ul>
+      <li *ngFor="let agencia of agencias">
+        <strong>ID:</strong> {{ agencia.id }} |
+        <strong>Nome:</strong> {{ agencia.nome }} |
+        <strong>Endereço:</strong> {{ agencia.endereco }} |
+        <strong>Banco:</strong> {{ agencia.banco?.nome || '-' }} |
+        <strong>Ativo:</strong> {{ agencia.ativo ? 'Sim' : 'Não' }}
+      </li>
+    </ul>
+  </div>
+</div>

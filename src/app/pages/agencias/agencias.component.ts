@@ -1,38 +1,90 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { IBanco } from '../../models/banco.model';
+import { BancoService } from '../../components/banco/banco.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-agencias',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './agencias.component.html',
-  styleUrls: ['./agencias.component.scss']
+  styleUrls: ['./agencias.component.scss'],
+  imports: [CommonModule, FormsModule]
 })
-export class AgenciasComponent {
-  bancos = [
-    { name: 'Banco Central', codigo: '001' },
-    { name: 'Banco Estelar', codigo: '002' },
-    { name: 'Banco Fictício', codigo: '003' }
-  ];
+export class AgenciasComponent implements OnInit {
+  bancos: IBanco[] = [];
+  agencias: any[] = []; // ✅ Correção: propriedade declarada para uso no template
+  novaAgencia = {
+    nome: '',
+    endereco: '',
+    bancoId: 0,
+    ativo: true,
+  };
 
-  agencias = [
-    { nome: 'Agência Alpha', codigo: '1001', banco: 'Banco Central', ativo: true },
-    { nome: 'Agência Beta', codigo: '1002', banco: 'Banco Estelar', ativo: true },
-    { nome: 'Agência Zeta', codigo: '1003', banco: 'Banco Fictício', ativo: false }
-  ];
+  apiUrl = environment.apiUrl;
 
-  novaAgencia = { nome: '', codigo: '', banco: '', ativo: true };
+  constructor(private http: HttpClient, private bancoService: BancoService) {}
 
-  adicionarAgencia() {
-    if (this.novaAgencia.nome && this.novaAgencia.codigo && this.novaAgencia.banco) {
-      this.agencias.push({ ...this.novaAgencia });
-      this.novaAgencia = { nome: '', codigo: '', banco: '', ativo: true };
-    }
+  ngOnInit(): void {
+    this.carregarBancos();
+    this.carregarAgencias(); // opcional, se quiser listar agências ao iniciar
   }
 
-  desativarAgencia(agencia: any) {
-    agencia.ativo = false;
+  carregarBancos(): void {
+    this.bancoService.getBancos().subscribe({
+      next: (dados) => {
+        this.bancos = dados;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar bancos:', err);
+      },
+    });
+  }
+
+  carregarAgencias(): void {
+    this.http.get<any[]>(`${this.apiUrl}/agencia/all`).subscribe({
+      next: (dados) => {
+        this.agencias = dados; // ✅ Preenchendo a lista usada no template
+      },
+      error: (err) => {
+        console.error('Erro ao carregar agências:', err);
+      },
+    });
+  }
+
+  adicionarAgencia(): void {
+    const bancoSelecionado = this.bancos.find(
+      (b) => b.id === this.novaAgencia.bancoId
+    );
+
+    if (!bancoSelecionado) {
+      console.error('Banco selecionado inválido.');
+      return;
+    }
+
+    const agenciaParaSalvar = {
+      nome: this.novaAgencia.nome,
+      endereco: this.novaAgencia.endereco,
+      ativo: true,
+      banco: bancoSelecionado,
+    };
+
+    this.http
+      .post(`${this.apiUrl}/agencia/nova`, agenciaParaSalvar)
+      .subscribe({
+        next: () => {
+          this.carregarAgencias();
+          this.novaAgencia = {
+            nome: '',
+            endereco: '',
+            bancoId: 0,
+            ativo: true,
+          };
+        },
+        error: (err) => {
+          console.error('Erro ao cadastrar agência:', err);
+        },
+      });
   }
 }

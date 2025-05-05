@@ -1,25 +1,35 @@
 <div class="painel">
-    <div class="formulario">
-      <h2>Cadastro de Usuário</h2>
-      <label>Nome</label>
-      <input [(ngModel)]="novoUsuario.nome" type="text" />
-  
-      <label>Email</label>
-      <input [(ngModel)]="novoUsuario.email" type="email" />
-  
-      <label>Senha</label>
-      <input [(ngModel)]="novoUsuario.senha" type="password" />
-  
-      <button (click)="adicionarUsuario()">Cadastrar</button>
-    </div>
-  
-    <div class="listagem">
-      <h2>Usuários Cadastrados</h2>
-      <ul>
-        <li *ngFor="let usuario of usuarios">
-          {{ usuario.nome }} - {{ usuario.email }}
-        </li>
-      </ul>
-    </div>
+  <div class="formulario">
+    <h2>Cadastro de Usuário</h2>
+
+    <label>Nome</label>
+    <input [(ngModel)]="novoUsuario.nome" type="text" />
+
+    <label>Email</label>
+    <input [(ngModel)]="novoUsuario.email" type="email" />
+
+    <label>Usuário</label>
+    <input [(ngModel)]="novoUsuario.usuario" type="text" />
+
+    <label>Senha</label>
+    <input [(ngModel)]="novoUsuario.senha" type="password" />
+
+    <label>Endereço</label>
+    <input [(ngModel)]="novoUsuario.endereco" type="text" />
+
+    <button (click)="adicionarUsuario()">Cadastrar</button>
   </div>
-  
+
+  <div class="listagem">
+    <h2>Usuários Cadastrados</h2>
+    <ul>
+      <li *ngFor="let usuario of usuarios">
+        <strong>ID:</strong> {{ usuario.id }} |
+        <strong>Nome:</strong> {{ usuario.nome }} |
+        <strong>Email:</strong> {{ usuario.email }} |
+        <strong>Usuário:</strong> {{ usuario.usuario }} |
+        <!-- <strong>Endereço:</strong> {{ usuario.endereco }} -->
+      </li>
+    </ul>
+  </div>
+</div>

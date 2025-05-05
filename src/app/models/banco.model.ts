@@ -1,5 +1,6 @@
 export interface IBanco {
-  id: number;
+  id?: number;
   nome: string;
-  dataFundacao: Date;
+  dataFundacao: string;
+  ativo?: boolean;
 }
