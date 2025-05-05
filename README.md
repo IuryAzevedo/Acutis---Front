@@ -1,59 +1,83 @@
-# DesafioFrontAngular
+# 🌐 Acutis - Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+Este é o frontend da aplicação **Acutis**, um sistema de gerenciamento de bancos, agências, usuários, contas e transações bancárias. Desenvolvido com **Angular**, oferece uma interface moderna e responsiva baseada nas cores azul e branco.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🧰 Tecnologias Utilizadas
+
+- [Angular 17+](https://angular.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SCSS](https://sass-lang.com/)
+- [RxJS](https://rxjs.dev/)
+- [Angular CLI](https://cli.angular.io/)
+- [Bootstrap Icons](https://icons.getbootstrap.com/) (opcional)
+
+---
+
+## 📦 Instalação do Projeto
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd acutis-frontend
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Rodando o Projeto
+
+Para iniciar o servidor de desenvolvimento:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse o sistema em:  
+[http://localhost:4200](http://localhost:4200)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🧪 Estrutura de Telas
 
-```bash
-ng generate component component-name
-```
+- **Bancos:** cadastro e listagem
+- **Agências:** cadastro, listagem e associação com banco
+- **Usuários:** gerenciamento de dados pessoais
+- **Contas:** abertura e atribuição a usuários
+- **Transações:** transferência entre contas
+- **Histórico:** listagem filtrável de transações
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Cada seção apresenta um painel dividido entre **formulário** e **listagem**, com visual moderno, responsivo e cores institucionais.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## 🌈 Estilo Visual
 
-To build the project run:
+O design segue uma paleta em tons de **azul e branco**, com foco em clareza, acessibilidade e navegação lateral estática. Os componentes são responsivos e estilizados com SCSS modular.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## ⚙️ Integração com Backend
 
-## Running unit tests
+A aplicação comunica-se com o backend Kotlin/Quarkus rodando em `http://localhost:8080`.  
+Certifique-se de que o backend esteja rodando antes de utilizar o frontend.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 👨‍💻 Autor
 
-## Running end-to-end tests
+Desenvolvido como parte de um desafio técnico para o sistema **Acutis**.  
+Feito com 💙 por **Iury Azevedo**.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## 📄 Licença
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Projeto de uso acadêmico. Todos os direitos reservados.
